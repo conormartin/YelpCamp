@@ -15,9 +15,10 @@ var commentRoutes       = require('./routes/comments'),
     campgroundRoutes    = require('./routes/campgrounds'),
     indexRoutes         = require('./routes/index');
 
-//creates new mongo database called yelp_camp
-// mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb://conor:yelpcamp123@ds247430.mlab.com:47430/yelpcampconor");
+//create new mongo database called yelp_camp
+//set process.env.DATABASEURL = mongodb://localhost/yelp_camp using export command on terminal
+mongoose.connect(process.env.DATABASEURL);
+// mongoose.connect("mongodb://conor:yelpcamp123@ds247430.mlab.com:47430/yelpcampconor");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
