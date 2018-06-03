@@ -16,7 +16,9 @@ var commentRoutes       = require('./routes/comments'),
     indexRoutes         = require('./routes/index');
 
 //creates new mongo database called yelp_camp
-mongoose.connect("mongodb://localhost/yelp_camp");
+// mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://conor:yelpcamp123@ds247430.mlab.com:47430/yelpcampconor");
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 //lets express know to use public directory for css & js files
