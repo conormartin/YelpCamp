@@ -16,9 +16,9 @@ var commentRoutes       = require('./routes/comments'),
     indexRoutes         = require('./routes/index');
 
 //create new mongo database called yelp_camp
-//set process.env.DATABASEURL = mongodb://localhost/yelp_camp using export command on terminal
-mongoose.connect(process.env.DATABASEURL);
-// mongoose.connect("mongodb://conor:yelpcamp123@ds247430.mlab.com:47430/yelpcampconor");
+//set process.env.DATABASEURL = mongodb://localhost/yelp_camp locally & mongodb://conor:yelpcamp123@ds247430.mlab.com:47430/yelpcampconor on heroku
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
+mongoose.connect(url);
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
@@ -57,6 +57,7 @@ app.use('/', indexRoutes);
 app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/comments', commentRoutes);
 
-app.listen(process.env.PORT, function() {
+var port = process.env.PORT || 8000;
+app.listen(port, function() {
     console.log("YelpCamp Server has Started!");
 });
