@@ -11,9 +11,9 @@ var express         = require("express"),
     Comment         = require("./models/comment"),
     User            = require('./models/user');
 
-var commentRoutes       = require('./routes/comments'),
-    campgroundRoutes    = require('./routes/campgrounds'),
-    indexRoutes         = require('./routes/index');
+var commentRoutes     = require('./routes/comments'),
+    campgroundRoutes  = require('./routes/campgrounds'),
+    indexRoutes       = require('./routes/index');
 
 //create new mongo database called yelp_camp
 //set process.env.DATABASEURL = mongodb://localhost/yelp_camp locally & mongodb://conor:yelpcamp123@ds247430.mlab.com:47430/yelpcampconor on heroku
@@ -46,6 +46,8 @@ passport.deserializeUser(User.deserializeUser());
 
 //makes current user and flash messages available on every route
 app.use(function(req, res, next) {
+    console.log(req.user)
+
     res.locals.currentUser = req.user;
     res.locals.error = req.flash('error');
     res.locals.success = req.flash('success');

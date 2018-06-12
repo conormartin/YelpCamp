@@ -32,6 +32,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         id: req.user._id,
         username: req.user.username
     };
+    console.log(req.user)
     var newCampground = {name:name, price:price, image:image, description:description, author:author};
     
     //saves newCampground object in the db
